@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RavKavApplicationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="areas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="corporation_code" Type="int" Nullable="false" />
+    <Property Name="ring_or_area" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="contracts">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="int" Nullable="false" />
+    <Property Name="daily" Type="float" />
+    <Property Name="weekly" Type="float" />
+    <Property Name="monthly" Type="float" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="travels">
+    <Key>
+      <PropertyRef Name="travelId" />
+    </Key>
+    <Property Name="travelId" Type="int" Nullable="false" />
+    <Property Name="direction" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="travelDate" Type="date" Nullable="false" />
+    <Property Name="sourceArea" Type="char" MaxLength="9" />
+    <Property Name="sourceRing" Type="nvarchar" MaxLength="50" />
+    <Property Name="destArea" Type="char" MaxLength="9" />
+    <Property Name="destRing" Type="nvarchar" MaxLength="50" />
+    <Property Name="corporateCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="birthDate" Type="date" Nullable="false" />
+    <Property Name="profile" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="phone" Type="char" MaxLength="10" />
+    <Property Name="ravKavCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="users_travels">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="travelId" Type="int" Nullable="false" />
+    <Property Name="travelDate" Type="date" />
+  </EntityType>
+  <Association Name="FK_areas_contracts">
+    <End Role="contracts" Type="Self.contracts" Multiplicity="1" />
+    <End Role="areas" Type="Self.areas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="contracts">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="areas">
+        <PropertyRef Name="corporation_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_travels_contracts">
+    <End Role="contracts" Type="Self.contracts" Multiplicity="1" />
+    <End Role="travels" Type="Self.travels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="contracts">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="travels">
+        <PropertyRef Name="corporateCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_travels_travels">
+    <End Role="travels" Type="Self.travels" Multiplicity="1" />
+    <End Role="users_travels" Type="Self.users_travels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="travels">
+        <PropertyRef Name="travelId" />
+      </Principal>
+      <Dependent Role="users_travels">
+        <PropertyRef Name="travelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_travels_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="users_travels" Type="Self.users_travels" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users_travels">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RavKavApplicationModelStoreContainer">
+    <EntitySet Name="areas" EntityType="Self.areas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contracts" EntityType="Self.contracts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="travels" EntityType="Self.travels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users_travels" EntityType="Self.users_travels" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_areas_contracts" Association="Self.FK_areas_contracts">
+      <End Role="contracts" EntitySet="contracts" />
+      <End Role="areas" EntitySet="areas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_travels_contracts" Association="Self.FK_travels_contracts">
+      <End Role="contracts" EntitySet="contracts" />
+      <End Role="travels" EntitySet="travels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_travels_travels" Association="Self.FK_users_travels_travels">
+      <End Role="travels" EntitySet="travels" />
+      <End Role="users_travels" EntitySet="users_travels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_travels_Users" Association="Self.FK_users_travels_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="users_travels" EntitySet="users_travels" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
