@@ -34,3 +34,15 @@ C:\Users\user1\Desktop\finalProj\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cach
 C:\Users\user1\Desktop\finalProj\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\user1\Desktop\finalProj\DAL\obj\Debug\DAL.dll
 C:\Users\user1\Desktop\finalProj\DAL\obj\Debug\DAL.pdb
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\bin\Debug\DAL.dll.config
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\bin\Debug\DAL.dll
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\bin\Debug\DAL.pdb
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\bin\Debug\EntityFramework.dll
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\bin\Debug\EntityFramework.xml
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\obj\Debug\DAL.dll
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\obj\Debug\DAL.pdb
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\DAL\obj\Debug\DAL.csproj.CopyComplete

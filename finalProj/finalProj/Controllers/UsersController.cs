@@ -13,7 +13,7 @@ namespace finalProj.Controllers
     {
         [HttpPost]
         [Route("register")]
-        public User Register(User newUser)
+        public bool Register(User newUser)
         {
             return UserLogic.Register(newUser);
         }
@@ -21,7 +21,7 @@ namespace finalProj.Controllers
         //{
         //    return UserLogic.Update():
         //}
-        [HttpGet]
+        [HttpPost]
         [Route("login")]
         public User Login(User existingUser)
         {

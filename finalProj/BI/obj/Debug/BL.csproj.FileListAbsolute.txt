@@ -25,3 +25,13 @@ C:\Users\user1\Desktop\finalProj\BI\obj\Debug\BL.csproj.CoreCompileInputs.cache
 C:\Users\user1\Desktop\finalProj\BI\obj\Debug\BL.csproj.CopyComplete
 C:\Users\user1\Desktop\finalProj\BI\obj\Debug\BL.dll
 C:\Users\user1\Desktop\finalProj\BI\obj\Debug\BL.pdb
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\BI\bin\Debug\BL.dll
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\BI\bin\Debug\BL.pdb
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\BI\bin\Debug\DAL.dll
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\BI\bin\Debug\DAL.pdb
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\BI\bin\Debug\DAL.dll.config
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\BI\obj\Debug\BL.dll
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\BI\obj\Debug\BL.pdb
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\BI\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\BI\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\חני\תכנות\Project_Final\recalculateApp\finalProj\BI\obj\Debug\BL.csproj.CopyComplete
