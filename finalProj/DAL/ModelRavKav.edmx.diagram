@@ -7,15 +7,15 @@
       <Diagram DiagramId="c6e9844bcfa04dbb908e7dbb473b3da5" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="RavKavApplicationModel.area" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RavKavApplicationModel.contract" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RavKavApplicationModel.travel" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="RavKavApplicationModel.FK_areas_contracts" ManuallyRouted="false" />
-        <AssociationConnector Association="RavKavApplicationModel.FK_travels_contracts" ManuallyRouted="false" />
         <EntityTypeShape EntityType="RavKavApplicationModel.sysdiagram" Width="1.5" PointX="0.5" PointY="7.625" />
         <EntityTypeShape EntityType="RavKavApplicationModel.User2" Width="1.5" PointX="4" PointY="11" />
         <EntityTypeShape EntityType="RavKavApplicationModel.User" Width="1.5" PointX="3" PointY="7.875" />
         <EntityTypeShape EntityType="RavKavApplicationModel.users_travels" Width="1.5" PointX="5.25" PointY="4.25" />
-        <AssociationConnector Association="RavKavApplicationModel.FK_users_travels_travels" />
         <AssociationConnector Association="RavKavApplicationModel.FK_users_travels_Users" />
+        <EntityTypeShape EntityType="RavKavApplicationModel.travel" Width="1.5" PointX="3" PointY="11.5" />
+        <AssociationConnector Association="RavKavApplicationModel.FK_travels_contracts" />
+        <AssociationConnector Association="RavKavApplicationModel.FK_users_travels_travels" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

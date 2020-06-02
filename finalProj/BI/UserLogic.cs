@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,11 +12,28 @@ namespace BL
     {
         private static RavKavApplicationEntities db = new RavKavApplicationEntities();
         public static User Register(User newUser)
-        {
-            //if(getUser(newUser.id)!=null)
-            ///choose another password
+        { //if(getUser(newUser.id)!=null)
+          ///choose another password
             //disable register with an existing password
-            return new User();
+            try { 
+            MailMessage email = new MailMessage("emuna.win@gmail.com", "rachel170370@gmail.com");
+            email.Subject = "Dear Racheli! this is your reciption ";
+            email.IsBodyHtml = true;
+            email.Body = "<html><head>< meta charset = 'utf-8' />  < title ></ title ></ head ><body dir='rtl'>hello world Hashem help me please</body></html>";
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+           SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("emuna.win@gmail.com", "281299hy");
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(email);
+                return newUser;
+            }
+            catch(Exception ex)
+            {
+
+
+                newUser.firstName = ex.Message;
+                return newUser;
+            }
         }
         public static void SendEmailMesg(User user)
         {

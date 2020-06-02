@@ -23,7 +23,6 @@ namespace DAL
         public int travelId { get; set; }
         public string direction { get; set; }
         public double price { get; set; }
-        public System.DateTime travelDate { get; set; }
         public string sourceArea { get; set; }
         public string sourceRing { get; set; }
         public string destArea { get; set; }
