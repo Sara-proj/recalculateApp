@@ -19,9 +19,9 @@ namespace BL
 
         public static List<travel> GetTravelsByUser(string userId)
         {
-            List<users_travels> users_Travels = db.users_travels.Where(tu => tu.userId == userId).ToList();
+            List<users_travels> userTravels = db.users_travels.Where(tu => tu.userId == userId).ToList();
             return db.travels.Where(travel =>
-              users_Travels.FirstOrDefault(ut => travel.travelId == ut.travelId)!=null
+              userTravels.FirstOrDefault(ut => travel.travelId == ut.travelId)!=null
             ).ToList();
         }
         // בודקים איזה קוד שיתוף יש לו הכי הרבה אזורים משותפים(אם אין אזור אז טבעת במקום) לנסיעות שערך באותו יום(אם יש כמה באותו מספר השוואות אז את ההכי זול)
