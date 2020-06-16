@@ -1,25 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="RavKavApplicationModelStoreContainer" CdmEntityContainer="RavKavApplicationEntities">
-    <EntitySetMapping Name="areas">
-      <EntityTypeMapping TypeName="RavKavApplicationModel.area">
-        <MappingFragment StoreEntitySet="areas">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="corporation_code" ColumnName="corporation_code" />
-          <ScalarProperty Name="ring_or_area" ColumnName="ring_or_area" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="contracts">
-      <EntityTypeMapping TypeName="RavKavApplicationModel.contract">
-        <MappingFragment StoreEntitySet="contracts">
-          <ScalarProperty Name="code" ColumnName="code" />
-          <ScalarProperty Name="daily" ColumnName="daily" />
-          <ScalarProperty Name="weekly" ColumnName="weekly" />
-          <ScalarProperty Name="monthly" ColumnName="monthly" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="RavKavApplicationModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -45,26 +26,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="areas">
+      <EntityTypeMapping TypeName="RavKavApplicationModel.area">
+        <MappingFragment StoreEntitySet="areas">
+          <ScalarProperty Name="ring_or_area" ColumnName="ring_or_area" />
+          <ScalarProperty Name="corporation_code" ColumnName="corporation_code" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="users_travels">
       <EntityTypeMapping TypeName="RavKavApplicationModel.users_travels">
         <MappingFragment StoreEntitySet="users_travels">
           <ScalarProperty Name="travelDate" ColumnName="travelDate" />
           <ScalarProperty Name="travelId" ColumnName="travelId" />
           <ScalarProperty Name="userId" ColumnName="userId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="travels">
-      <EntityTypeMapping TypeName="RavKavApplicationModel.travel">
-        <MappingFragment StoreEntitySet="travels">
-          <ScalarProperty Name="corporateCode" ColumnName="corporateCode" />
-          <ScalarProperty Name="destRing" ColumnName="destRing" />
-          <ScalarProperty Name="destArea" ColumnName="destArea" />
-          <ScalarProperty Name="sourceRing" ColumnName="sourceRing" />
-          <ScalarProperty Name="sourceArea" ColumnName="sourceArea" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="direction" ColumnName="direction" />
-          <ScalarProperty Name="travelId" ColumnName="travelId" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

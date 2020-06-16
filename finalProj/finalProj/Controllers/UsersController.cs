@@ -15,6 +15,7 @@ namespace finalProj.Controllers
         [Route("register")]
         public User Register(User newUser)
         {
+            System.Diagnostics.Debug.WriteLine(newUser);
             return UserLogic.Register(newUser);
         }
         //public User Update()

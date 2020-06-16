@@ -41,7 +41,6 @@ C:\SARI\recalculateApp\recalculateApp\finalProj\DAL\bin\Debug\EntityFramework.dl
 C:\SARI\recalculateApp\recalculateApp\finalProj\DAL\bin\Debug\EntityFramework.SqlServer.dll
 C:\SARI\recalculateApp\recalculateApp\finalProj\DAL\bin\Debug\EntityFramework.xml
 C:\SARI\recalculateApp\recalculateApp\finalProj\DAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\SARI\recalculateApp\recalculateApp\finalProj\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
 C:\SARI\recalculateApp\recalculateApp\finalProj\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\SARI\recalculateApp\recalculateApp\finalProj\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\SARI\recalculateApp\recalculateApp\finalProj\DAL\obj\Debug\DAL.dll

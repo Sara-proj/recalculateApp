@@ -12,42 +12,38 @@ namespace BL
     {
         private static RavKavApplicationEntities db = new RavKavApplicationEntities();
         public static User Register(User newUser)
-        { //if(getUser(newUser.id)!=null)
-          ///choose another password
-            //disable register with an existing password
-            try { 
-            MailMessage email = new MailMessage("emuna.win@gmail.com", "rachel170370@gmail.com");
-            email.Subject = "Dear Racheli! this is your reciption ";
-            email.IsBodyHtml = true;
-            email.Body = "<html><head>< meta charset = 'utf-8' />  < title ></ title ></ head ><body dir='rtl'>hello world Hashem help me please</body></html>";
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-           SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("emuna.win@gmail.com", "281299hy");
-            SmtpServer.EnableSsl = true;
-            SmtpServer.Send(email);
-                return newUser;
-            }
-            catch(Exception ex)
-            {
-
-
-                newUser.firstName = ex.Message;
-                return newUser;
-            }
-        }
-        public static void SendEmailMesg(User user)
         {
-            string email = user.email;
+            //SendEmailMesg(newUser, "Hello " + newUser.firstName,"we are happy to join you our team");
+            return newUser ;
+        }
+        public static void SendEmailMesg(User user, string subject, string msg)
+        {
+            string ad = user.email;
             try
             {
-
-
+                MailMessage email = new MailMessage("emuna.win@gmail.com", ad);
+                email.Subject = subject;
+                email.IsBodyHtml = false;
+                email.Body = msg;
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("emuna.win@gmail.com", "281299hy");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(email);
             }
-            catch (Exception)
+            catch (SmtpException ex)
             {
-
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
+        /*login 
+         parameters: username and password
+         ansure password is correct . 
+         If it is- the function returns the user object, otherwise-null */
         public static User Login(string userName, string userPassword)
         {
             User existingUser = new User();
@@ -55,17 +51,21 @@ namespace BL
             if (existingUser != null && existingUser.firstName == userName)
                 return existingUser;
             return null;
-            
         }
+        /*reset password
+         confirm email address- email message with confirm code is sent to user's email address.
+         The user has to enter that code within 15 minutes.
+         */
         public static void ResetPassword(User userForConfirm)
         {
             //get user by user name
-             User existingUser = db.Users.FirstOrDefault(user=>user.firstName==userForConfirm.firstName );
+            User existingUser = db.Users.FirstOrDefault(user => user.firstName == userForConfirm.firstName);
             //send email message with confirm code
-            SendEmailMesg(userForConfirm);
+            SendEmailMesg(userForConfirm, "", "");
 
         }
         //get user by password 
+        //The function returns null if the password was'nt found or if details are incorrect.
         private static User getUser(string password)
         {
             User existingUser = db.Users.FirstOrDefault(user => user.id == password);

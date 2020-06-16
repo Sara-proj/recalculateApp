@@ -36,3 +36,9 @@ C:\SARI\recalculateApp\recalculateApp\finalProj\BI\obj\Debug\BL.csproj.CoreCompi
 C:\SARI\recalculateApp\recalculateApp\finalProj\BI\obj\Debug\BL.csproj.CopyComplete
 C:\SARI\recalculateApp\recalculateApp\finalProj\BI\obj\Debug\BL.dll
 C:\SARI\recalculateApp\recalculateApp\finalProj\BI\obj\Debug\BL.pdb
+C:\SARI\recalculateApp\recalculateApp\finalProj\BI\bin\Debug\BL.dll.config
+C:\SARI\recalculateApp\recalculateApp\finalProj\BI\bin\Debug\EntityFramework.dll
+C:\SARI\recalculateApp\recalculateApp\finalProj\BI\bin\Debug\EntityFramework.SqlServer.dll
+C:\SARI\recalculateApp\recalculateApp\finalProj\BI\bin\Debug\EntityFramework.SqlServer.xml
+C:\SARI\recalculateApp\recalculateApp\finalProj\BI\bin\Debug\DTO.dll
+C:\SARI\recalculateApp\recalculateApp\finalProj\BI\bin\Debug\DTO.pdb
