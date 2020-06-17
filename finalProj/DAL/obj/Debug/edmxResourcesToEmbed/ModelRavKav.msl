@@ -20,21 +20,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="travels">
-      <EntityTypeMapping TypeName="RavKavApplicationModel.travel">
-        <MappingFragment StoreEntitySet="travels">
-          <ScalarProperty Name="travelId" ColumnName="travelId" />
-          <ScalarProperty Name="direction" ColumnName="direction" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="travelDate" ColumnName="travelDate" />
-          <ScalarProperty Name="sourceArea" ColumnName="sourceArea" />
-          <ScalarProperty Name="sourceRing" ColumnName="sourceRing" />
-          <ScalarProperty Name="destArea" ColumnName="destArea" />
-          <ScalarProperty Name="destRing" ColumnName="destRing" />
-          <ScalarProperty Name="corporateCode" ColumnName="corporateCode" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="RavKavApplicationModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -66,6 +51,20 @@
           <ScalarProperty Name="travelDate" ColumnName="travelDate" />
           <ScalarProperty Name="travelId" ColumnName="travelId" />
           <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="travels">
+      <EntityTypeMapping TypeName="RavKavApplicationModel.travel">
+        <MappingFragment StoreEntitySet="travels">
+          <ScalarProperty Name="corporateCode" ColumnName="corporateCode" />
+          <ScalarProperty Name="destRing" ColumnName="destRing" />
+          <ScalarProperty Name="destArea" ColumnName="destArea" />
+          <ScalarProperty Name="sourceRing" ColumnName="sourceRing" />
+          <ScalarProperty Name="sourceArea" ColumnName="sourceArea" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="direction" ColumnName="direction" />
+          <ScalarProperty Name="travelId" ColumnName="travelId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

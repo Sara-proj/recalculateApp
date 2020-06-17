@@ -18,7 +18,7 @@ namespace DAL
         public int travelId { get; set; }
         public Nullable<System.DateTime> travelDate { get; set; }
     
-        public virtual travel travel { get; set; }
         public virtual User User { get; set; }
+        public virtual travel travel { get; set; }
     }
 }

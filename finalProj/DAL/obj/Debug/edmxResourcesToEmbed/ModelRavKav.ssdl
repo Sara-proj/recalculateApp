@@ -6,7 +6,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="corporation_code" Type="int" Nullable="false" />
-    <Property Name="ring_or_area" Type="int" Nullable="false" />
+    <Property Name="ring_or_area" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="contracts">
     <Key>
@@ -34,10 +34,9 @@
     <Property Name="travelId" Type="int" Nullable="false" />
     <Property Name="direction" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="price" Type="float" Nullable="false" />
-    <Property Name="travelDate" Type="date" Nullable="false" />
-    <Property Name="sourceArea" Type="char" MaxLength="9" />
+    <Property Name="sourceArea" Type="nvarchar" MaxLength="50" />
     <Property Name="sourceRing" Type="nvarchar" MaxLength="50" />
-    <Property Name="destArea" Type="char" MaxLength="9" />
+    <Property Name="destArea" Type="nvarchar" MaxLength="50" />
     <Property Name="destRing" Type="nvarchar" MaxLength="50" />
     <Property Name="corporateCode" Type="int" Nullable="false" />
   </EntityType>
@@ -51,7 +50,7 @@
     <Property Name="birthDate" Type="date" Nullable="false" />
     <Property Name="profile" Type="nvarchar" MaxLength="50" />
     <Property Name="email" Type="nvarchar" MaxLength="50" />
-    <Property Name="phone" Type="char" MaxLength="10" />
+    <Property Name="phone" Type="nvarchar" MaxLength="11" />
     <Property Name="ravKavCode" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="users_travels">
