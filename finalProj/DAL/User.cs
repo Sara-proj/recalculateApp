@@ -14,6 +14,12 @@ namespace DAL
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.users_travels = new HashSet<users_travels>();
+        }
+    
         public string id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -23,6 +29,7 @@ namespace DAL
         public string phone { get; set; }
         public string ravKavCode { get; set; }
     
-        public virtual users_travels users_travels { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<users_travels> users_travels { get; set; }
     }
 }

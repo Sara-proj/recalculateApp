@@ -13,15 +13,6 @@
           <Property Name="corporation_code" Type="int" Nullable="false" />
           <Property Name="ring_or_area" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="contracts">
-          <Key>
-            <PropertyRef Name="code" />
-          </Key>
-          <Property Name="code" Type="int" Nullable="false" />
-          <Property Name="daily" Type="float" />
-          <Property Name="weekly" Type="float" />
-          <Property Name="monthly" Type="float" />
-        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -31,19 +22,6 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="travels">
-          <Key>
-            <PropertyRef Name="travelId" />
-          </Key>
-          <Property Name="travelId" Type="int" Nullable="false" />
-          <Property Name="direction" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="price" Type="float" Nullable="false" />
-          <Property Name="sourceArea" Type="nvarchar" MaxLength="50" />
-          <Property Name="sourceRing" Type="nvarchar" MaxLength="50" />
-          <Property Name="destArea" Type="nvarchar" MaxLength="50" />
-          <Property Name="destRing" Type="nvarchar" MaxLength="50" />
-          <Property Name="corporateCode" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -60,51 +38,16 @@
         </EntityType>
         <EntityType Name="users_travels">
           <Key>
-            <PropertyRef Name="userId" />
+            <PropertyRef Name="id" />
           </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="travelId" Type="int" Nullable="false" />
-          <Property Name="travelDate" Type="date" />
+          <Property Name="travelDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <Association Name="FK_areas_contracts">
-          <End Role="contracts" Type="Self.contracts" Multiplicity="1" />
-          <End Role="areas" Type="Self.areas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="contracts">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="areas">
-              <PropertyRef Name="corporation_code" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_travels_contracts">
-          <End Role="contracts" Type="Self.contracts" Multiplicity="1" />
-          <End Role="travels" Type="Self.travels" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="contracts">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="travels">
-              <PropertyRef Name="corporateCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_users_travels_travels">
-          <End Role="travels" Type="Self.travels" Multiplicity="1" />
-          <End Role="users_travels" Type="Self.users_travels" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="travels">
-              <PropertyRef Name="travelId" />
-            </Principal>
-            <Dependent Role="users_travels">
-              <PropertyRef Name="travelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_users_travels_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="users_travels" Type="Self.users_travels" Multiplicity="0..1" />
+          <End Role="users_travels" Type="Self.users_travels" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="id" />
@@ -116,23 +59,9 @@
         </Association>
         <EntityContainer Name="RavKavApplicationModelStoreContainer">
           <EntitySet Name="areas" EntityType="Self.areas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="contracts" EntityType="Self.contracts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="travels" EntityType="Self.travels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users_travels" EntityType="Self.users_travels" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_areas_contracts" Association="Self.FK_areas_contracts">
-            <End Role="contracts" EntitySet="contracts" />
-            <End Role="areas" EntitySet="areas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_travels_contracts" Association="Self.FK_travels_contracts">
-            <End Role="contracts" EntitySet="contracts" />
-            <End Role="travels" EntitySet="travels" />
-          </AssociationSet>
-          <AssociationSet Name="FK_users_travels_travels" Association="Self.FK_users_travels_travels">
-            <End Role="travels" EntitySet="travels" />
-            <End Role="users_travels" EntitySet="users_travels" />
-          </AssociationSet>
           <AssociationSet Name="FK_users_travels_Users" Association="Self.FK_users_travels_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="users_travels" EntitySet="users_travels" />
@@ -142,59 +71,13 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RavKavApplicationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="area">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="corporation_code" Type="Int32" Nullable="false" />
-          <Property Name="ring_or_area" Type="Int32" />
-          <NavigationProperty Name="contract" Relationship="Self.FK_areas_contracts" FromRole="areas" ToRole="contracts" />
-        </EntityType>
-        <EntityType Name="contract">
-          <Key>
-            <PropertyRef Name="code" />
-          </Key>
-          <Property Name="code" Type="Int32" Nullable="false" />
-          <Property Name="daily" Type="Double" />
-          <Property Name="weekly" Type="Double" />
-          <Property Name="monthly" Type="Double" />
-          <NavigationProperty Name="areas" Relationship="Self.FK_areas_contracts" FromRole="contracts" ToRole="areas" />
-          <NavigationProperty Name="travels" Relationship="RavKavApplicationModel.FK_travels_contracts" FromRole="contract" ToRole="travel" />
-        </EntityType>
-        <Association Name="FK_areas_contracts">
-          <End Role="contracts" Type="Self.contract" Multiplicity="1" />
-          <End Role="areas" Type="Self.area" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="contracts">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="areas">
-              <PropertyRef Name="corporation_code" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="RavKavApplicationEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="areas" EntityType="Self.area" />
-          <EntitySet Name="contracts" EntityType="Self.contract" />
-          <AssociationSet Name="FK_areas_contracts" Association="Self.FK_areas_contracts">
-            <End Role="contracts" EntitySet="contracts" />
-            <End Role="areas" EntitySet="areas" />
-          </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="RavKavApplicationModel.sysdiagram" />
           <EntitySet Name="Users" EntityType="RavKavApplicationModel.User" />
+          <EntitySet Name="areas" EntityType="RavKavApplicationModel.area" />
           <EntitySet Name="users_travels" EntityType="RavKavApplicationModel.users_travels" />
           <AssociationSet Name="FK_users_travels_Users" Association="RavKavApplicationModel.FK_users_travels_Users">
             <End Role="User" EntitySet="Users" />
-            <End Role="users_travels" EntitySet="users_travels" />
-          </AssociationSet>
-          <EntitySet Name="travels" EntityType="RavKavApplicationModel.travel" />
-          <AssociationSet Name="FK_travels_contracts" Association="RavKavApplicationModel.FK_travels_contracts">
-            <End Role="contract" EntitySet="contracts" />
-            <End Role="travel" EntitySet="travels" />
-          </AssociationSet>
-          <AssociationSet Name="FK_users_travels_travels" Association="RavKavApplicationModel.FK_users_travels_travels">
-            <End Role="travel" EntitySet="travels" />
             <End Role="users_travels" EntitySet="users_travels" />
           </AssociationSet>
           </EntityContainer>
@@ -222,19 +105,27 @@
           <Property Name="ravKavCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="users_travels" Relationship="RavKavApplicationModel.FK_users_travels_Users" FromRole="User" ToRole="users_travels" />
         </EntityType>
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="corporation_code" Type="Int32" Nullable="false" />
+          <Property Name="ring_or_area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="users_travels">
           <Key>
-            <PropertyRef Name="userId" />
+            <PropertyRef Name="id" />
           </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="travelId" Type="Int32" Nullable="false" />
-          <Property Name="travelDate" Type="DateTime" Precision="0" />
+          <Property Name="travelDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="User" Relationship="RavKavApplicationModel.FK_users_travels_Users" FromRole="users_travels" ToRole="User" />
-          <NavigationProperty Name="travel" Relationship="RavKavApplicationModel.FK_users_travels_travels" FromRole="users_travels" ToRole="travel" />
         </EntityType>
         <Association Name="FK_users_travels_Users">
           <End Type="RavKavApplicationModel.User" Role="User" Multiplicity="1" />
-          <End Type="RavKavApplicationModel.users_travels" Role="users_travels" Multiplicity="0..1" />
+          <End Type="RavKavApplicationModel.users_travels" Role="users_travels" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="id" />
@@ -244,70 +135,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="travel">
-          <Key>
-            <PropertyRef Name="travelId" />
-          </Key>
-          <Property Name="travelId" Type="Int32" Nullable="false" />
-          <Property Name="direction" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="price" Type="Double" Nullable="false" />
-          <Property Name="sourceArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="sourceRing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="destArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="destRing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="corporateCode" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="contract" Relationship="RavKavApplicationModel.FK_travels_contracts" FromRole="travel" ToRole="contract" />
-          <NavigationProperty Name="users_travels" Relationship="RavKavApplicationModel.FK_users_travels_travels" FromRole="travel" ToRole="users_travels" />
-        </EntityType>
-        <Association Name="FK_travels_contracts">
-          <End Type="RavKavApplicationModel.contract" Role="contract" Multiplicity="1" />
-          <End Type="RavKavApplicationModel.travel" Role="travel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="contract">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="travel">
-              <PropertyRef Name="corporateCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_users_travels_travels">
-          <End Type="RavKavApplicationModel.travel" Role="travel" Multiplicity="1" />
-          <End Type="RavKavApplicationModel.users_travels" Role="users_travels" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="travel">
-              <PropertyRef Name="travelId" />
-            </Principal>
-            <Dependent Role="users_travels">
-              <PropertyRef Name="travelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="RavKavApplicationModelStoreContainer" CdmEntityContainer="RavKavApplicationEntities">
-          <EntitySetMapping Name="areas">
-            <EntityTypeMapping TypeName="RavKavApplicationModel.area">
-              <MappingFragment StoreEntitySet="areas">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="corporation_code" ColumnName="corporation_code" />
-                <ScalarProperty Name="ring_or_area" ColumnName="ring_or_area" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="contracts">
-            <EntityTypeMapping TypeName="RavKavApplicationModel.contract">
-              <MappingFragment StoreEntitySet="contracts">
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="daily" ColumnName="daily" />
-                <ScalarProperty Name="weekly" ColumnName="weekly" />
-                <ScalarProperty Name="monthly" ColumnName="monthly" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="RavKavApplicationModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -333,26 +166,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="areas">
+            <EntityTypeMapping TypeName="RavKavApplicationModel.area">
+              <MappingFragment StoreEntitySet="areas">
+                <ScalarProperty Name="ring_or_area" ColumnName="ring_or_area" />
+                <ScalarProperty Name="corporation_code" ColumnName="corporation_code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="users_travels">
             <EntityTypeMapping TypeName="RavKavApplicationModel.users_travels">
               <MappingFragment StoreEntitySet="users_travels">
                 <ScalarProperty Name="travelDate" ColumnName="travelDate" />
                 <ScalarProperty Name="travelId" ColumnName="travelId" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="travels">
-            <EntityTypeMapping TypeName="RavKavApplicationModel.travel">
-              <MappingFragment StoreEntitySet="travels">
-                <ScalarProperty Name="corporateCode" ColumnName="corporateCode" />
-                <ScalarProperty Name="destRing" ColumnName="destRing" />
-                <ScalarProperty Name="destArea" ColumnName="destArea" />
-                <ScalarProperty Name="sourceRing" ColumnName="sourceRing" />
-                <ScalarProperty Name="sourceArea" ColumnName="sourceArea" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="direction" ColumnName="direction" />
-                <ScalarProperty Name="travelId" ColumnName="travelId" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

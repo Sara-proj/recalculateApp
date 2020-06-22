@@ -25,11 +25,9 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<area> areas { get; set; }
-        public virtual DbSet<contract> contracts { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<area> areas { get; set; }
         public virtual DbSet<users_travels> users_travels { get; set; }
-        public virtual DbSet<travel> travels { get; set; }
     }
 }

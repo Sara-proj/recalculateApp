@@ -14,11 +14,11 @@ namespace DAL
     
     public partial class users_travels
     {
+        public int id { get; set; }
         public string userId { get; set; }
         public int travelId { get; set; }
-        public Nullable<System.DateTime> travelDate { get; set; }
+        public System.DateTime travelDate { get; set; }
     
         public virtual User User { get; set; }
-        public virtual travel travel { get; set; }
     }
 }

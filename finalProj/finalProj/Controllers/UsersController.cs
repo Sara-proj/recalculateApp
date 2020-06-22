@@ -13,15 +13,16 @@ namespace finalProj.Controllers
     {
         [HttpPost]
         [Route("register")]
-        public bool Register(User newUser)
+        public User Register(User newUser)
         {
+            System.Diagnostics.Debug.WriteLine(newUser);
             return UserLogic.Register(newUser);
         }
         //public User Update()
         //{
         //    return UserLogic.Update():
         //}
-        [HttpPost]
+        [HttpGet]
         [Route("login")]
         public User Login(User existingUser)
         {

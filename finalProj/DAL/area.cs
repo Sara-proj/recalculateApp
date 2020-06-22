@@ -16,8 +16,6 @@ namespace DAL
     {
         public int id { get; set; }
         public int corporation_code { get; set; }
-        public Nullable<int> ring_or_area { get; set; }
-    
-        public virtual contract contract { get; set; }
+        public string ring_or_area { get; set; }
     }
 }
