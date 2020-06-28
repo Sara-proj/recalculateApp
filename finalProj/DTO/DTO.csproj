@@ -41,11 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="AreaDTO.cs" />
     <Compile Include="TravelDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TravelUserDTO.cs" />
     <Compile Include="UserDTO.cs" />
+=======
+    <Compile Include="TravelDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TravelUserDTO.cs" />
+>>>>>>> 8b47b179e0d855f390dbbd485fdd50bf659d5551
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

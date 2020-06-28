@@ -13,7 +13,20 @@ namespace DTO
         public string userId { get; set; }
         public int travelId { get; set; }
         public DateTime travelDate { get; set; }
+<<<<<<< HEAD
        
        
+=======
+        public users_travels ConvertDTOtoDAL()
+        {
+           return new users_travels()
+            {
+                id = id,
+                travelDate =travelDate,
+                travelId = travelId,
+                userId = userId
+            };
+        }
+>>>>>>> 8b47b179e0d855f390dbbd485fdd50bf659d5551
     }
 }

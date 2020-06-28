@@ -52,9 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+<<<<<<< HEAD
     <Compile Include="Conversions\AreaConvert.cs" />
     <Compile Include="Conversions\TravelUsersConvert.cs" />
     <Compile Include="Conversions\UserConvert.cs" />
+=======
+>>>>>>> 8b47b179e0d855f390dbbd485fdd50bf659d5551
     <Compile Include="CorporationCodeLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TravelLogic.cs" />

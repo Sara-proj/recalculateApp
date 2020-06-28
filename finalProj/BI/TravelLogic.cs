@@ -13,8 +13,13 @@ namespace BL
         private static RavKavApplicationEntities db = new RavKavApplicationEntities();
         public static void GenerateTravels()
         {
+<<<<<<< HEAD
             UserDTO user1 =  new UserDTO() { id="315136218"};
             UserDTO user2 = new UserDTO() { id = "315136226" };
+=======
+            User user1 = new User() { id="315136218"};
+            User user2 = new User() { id = "315136226" };
+>>>>>>> 8b47b179e0d855f390dbbd485fdd50bf659d5551
             for (int i=0;i<200;i++)
             {
                 Random r = new Random();
